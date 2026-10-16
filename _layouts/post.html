@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <div class="eyebrow">{{ page.category | default: page.categories | first | upcase }}</div>
+    <h1>{{ page.title }}</h1>
+    {% if page.deck %}<p class="post-deck">{{ page.deck }}</p>{% endif %}
+    <div class="post-meta">
+      <span>{{ page.author | default: site.author.name }}</span>
+      <span>{{ page.date | date: "%d %b %Y" }}</span>
+      {% if page.location %}<span>{{ page.location }}</span>{% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+  <figure class="hero-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <footer class="post-end">
+    <a href="{{ '/' | relative_url }}">← 返回最新文章</a>
+  </footer>
+</article>

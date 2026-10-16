@@ -1,0 +1,18 @@
+---
+layout: default
+title: Screenings
+---
+<section class="page-intro">
+  <div class="eyebrow">ARCHIVE</div>
+  <h1>SCREENINGS</h1>
+  <p>放映记录、映后交流、导演对谈，以及电影在银幕之外继续发生的时刻。</p>
+</section>
+<section class="archive-list">
+{% assign posts = site.categories.screenings %}
+{% for post in posts %}
+  <a class="archive-row" href="{{ post.url | relative_url }}">
+    <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+    <strong>{{ post.title }}</strong>
+  </a>
+{% endfor %}
+</section>

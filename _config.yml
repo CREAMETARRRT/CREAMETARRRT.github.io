@@ -1,0 +1,23 @@
+title: "奶油蛋挞"
+subtitle: "CREAM TART"
+description: "Independent cinema, festivals and moving images."
+url: ""
+baseurl: ""
+lang: "zh-CN"
+timezone: "Asia/Shanghai"
+permalink: /:categories/:year/:month/:day/:title/
+markdown: kramdown
+future: true
+
+# Edit these later
+author:
+  name: "奶油蛋挞编辑部"
+  email: ""
+
+social:
+  instagram: ""
+  xiaohongshu: ""
+
+exclude:
+  - README.md
+  - LICENSE

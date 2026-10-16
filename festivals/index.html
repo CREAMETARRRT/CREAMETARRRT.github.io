@@ -1,0 +1,18 @@
+---
+layout: default
+title: Festivals
+---
+<section class="page-intro">
+  <div class="eyebrow">ARCHIVE</div>
+  <h1>FESTIVALS</h1>
+  <p>电影节现场、市场观察、选片笔记与城市之间的移动影像。</p>
+</section>
+<section class="archive-list">
+{% assign posts = site.categories.festivals %}
+{% for post in posts %}
+  <a class="archive-row" href="{{ post.url | relative_url }}">
+    <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+    <strong>{{ post.title }}</strong>
+  </a>
+{% endfor %}
+</section>

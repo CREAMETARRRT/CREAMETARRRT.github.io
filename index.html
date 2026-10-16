@@ -1,0 +1,41 @@
+---
+layout: default
+---
+<section class="masthead">
+  <p class="kicker">INDEPENDENT CINEMA JOURNAL</p>
+  <h1>奶油蛋挞</h1>
+  <p class="masthead-en">CREAM TART</p>
+  <p class="masthead-copy">Independent cinema, festivals and moving images.<br>关于放映、影展、电影与现场的长期记录。</p>
+</section>
+
+{% assign featured = site.posts | first %}
+{% if featured %}
+<section class="featured">
+  <div class="section-label">LATEST</div>
+  <a class="featured-card" href="{{ featured.url | relative_url }}">
+    <div class="featured-copy">
+      <span class="eyebrow">{{ featured.category | default: featured.categories | first | upcase }}</span>
+      <h2>{{ featured.title }}</h2>
+      {% if featured.deck %}<p>{{ featured.deck }}</p>{% endif %}
+      <span class="meta-line">{{ featured.date | date: "%d %b %Y" }} · {{ featured.author | default: site.author.name }}</span>
+    </div>
+    <div class="featured-number">001</div>
+  </a>
+</section>
+{% endif %}
+
+<section class="latest-grid-section">
+  <div class="section-label">MORE STORIES</div>
+  <div class="story-grid">
+  {% for post in site.posts offset:1 limit:8 %}
+    <article class="story-card">
+      <a href="{{ post.url | relative_url }}">
+        <span class="eyebrow">{{ post.category | default: post.categories | first | upcase }}</span>
+        <h3>{{ post.title }}</h3>
+        {% if post.deck %}<p>{{ post.deck }}</p>{% endif %}
+        <span class="meta-line">{{ post.date | date: "%d %b %Y" }}</span>
+      </a>
+    </article>
+  {% endfor %}
+  </div>
+</section>
