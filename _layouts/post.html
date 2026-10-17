@@ -3,13 +3,16 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
-    <div class="eyebrow">{{ page.category | default: page.categories | first | upcase }}</div>
-    <h1>{{ page.title }}</h1>
-    {% if page.deck %}<p class="post-deck">{{ page.deck }}</p>{% endif %}
+    <div class="eyebrow">{% include category-label.html post=page %}</div>
+    <h1>{% include post-title.html post=page %}</h1>
+    {% if page.deck or page.deck_en or page.deck_zh %}
+      <p class="post-deck">{% include post-deck.html post=page %}</p>
+    {% endif %}
     <div class="post-meta">
       <span>{{ page.author | default: site.author.name }}</span>
       <span>{{ page.date | date: "%d %b %Y" }}</span>
       {% if page.location %}<span>{{ page.location }}</span>{% endif %}
+      {% if page.screening_type %}<span>{{ page.screening_type }}</span>{% endif %}
     </div>
   </header>
 
@@ -24,7 +27,15 @@ layout: default
     {{ content }}
   </div>
 
+  {% if page.original_url %}
+  <div class="source-note">
+    <span class="i18n-en">Originally published elsewhere. </span>
+    <span class="i18n-zh">本文最初发表于其他平台。 </span>
+    <a href="{{ page.original_url }}" target="_blank" rel="noopener">Original link ↗</a>
+  </div>
+  {% endif %}
+
   <footer class="post-end">
-    <a href="{{ '/' | relative_url }}">← 返回最新文章</a>
+    <a href="{{ '/archive/' | relative_url }}"><span class="i18n-en">← Back to archive</span><span class="i18n-zh">← 返回档案</span></a>
   </footer>
 </article>

@@ -1,7 +1,18 @@
 <footer class="site-footer">
-  <div>
-    <strong>{{ site.title }} / {{ site.subtitle }}</strong>
-    <p>{{ site.description }}</p>
+  <div class="footer-brand">
+    <strong>CREAM TART / 奶油蛋挞</strong>
+    <p class="i18n-en">Independent cinema, festival dispatches, filmmaker conversations and screening records.</p>
+    <p class="i18n-zh">关于独立电影、电影节、导演对谈、放映与迷影生活的长期记录。</p>
   </div>
-  <p>© {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+
+  <div class="footer-links">
+    {% if site.contact.email != "" %}<a href="mailto:{{ site.contact.email }}">EMAIL</a>{% endif %}
+    {% if site.contact.phone != "" %}<a href="tel:{{ site.contact.phone }}">PHONE</a>{% endif %}
+    {% if site.social.instagram != "" %}<a href="{{ site.social.instagram }}" target="_blank" rel="noopener">INSTAGRAM</a>{% endif %}
+    {% if site.social.x != "" %}<a href="{{ site.social.x }}" target="_blank" rel="noopener">X</a>{% endif %}
+    {% if site.social.letterboxd != "" %}<a href="{{ site.social.letterboxd }}" target="_blank" rel="noopener">LETTERBOXD</a>{% endif %}
+    {% if site.social.xiaohongshu != "" %}<a href="{{ site.social.xiaohongshu }}" target="_blank" rel="noopener">XIAOHONGSHU</a>{% endif %}
+  </div>
+
+  <p class="footer-copy">© {{ 'now' | date: '%Y' }} CREAM TART.</p>
 </footer>

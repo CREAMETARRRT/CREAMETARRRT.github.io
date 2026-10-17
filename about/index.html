@@ -1,0 +1,70 @@
+---
+layout: default
+title: About
+---
+<section class="page-intro about-intro">
+  <div class="eyebrow">ABOUT CREAM TART</div>
+  <h1>ABOUT</h1>
+  <p class="i18n-en">An independent cinema journal built from first-hand encounters with films.</p>
+  <p class="i18n-zh">一本从真实观影、放映与相遇中生长出来的独立电影刊物。</p>
+</section>
+
+<section class="about-grid">
+  <article>
+    <span class="section-label">01 / EDITORIAL</span>
+    <div class="i18n-en">
+      <h2>What CREAM TART is</h2>
+      <p>CREAM TART is an independent cinema journal focused on independent and underground film, film festivals, filmmaker conversations, screening culture and the everyday life around moving images.</p>
+      <p>It is a one-person publication. The point of view is deliberately personal: first-hand screenings, festival visits, conversations, programming experiences and things noticed along the way.</p>
+    </div>
+    <div class="i18n-zh">
+      <h2>奶油蛋挞是什么</h2>
+      <p>CREAM TART / 奶油蛋挞关注独立电影、地下电影、电影节、创作者对谈、放映文化，以及围绕影像发生的日常生活。</p>
+      <p>这是一本由一个人独立编辑的电影刊物。它保留明确的个人视角：真实参与的放映、电影节、对谈、策展经验，以及一路上被注意到的细节。</p>
+    </div>
+  </article>
+
+  <article>
+    <span class="section-label">02 / SCOPE</span>
+    <div class="i18n-en">
+      <h2>What stays here</h2>
+      <p><strong>Screenings</strong> — selected records of independent and underground film screenings, guests, Q&As and curated programmes.</p>
+      <p><strong>Festivals</strong> — field notes, reporting and observations from festivals and markets.</p>
+      <p><strong>Conversations</strong> — interviews and exchanges with filmmakers.</p>
+      <p><strong>Notes</strong> — filmgoing, cinemas, travel, objects, industry observations and occasional criticism.</p>
+    </div>
+    <div class="i18n-zh">
+      <h2>这里留下什么</h2>
+      <p><strong>Screenings</strong> — 独立电影与地下电影的放映、嘉宾、映后和策展单元记录。</p>
+      <p><strong>Festivals</strong> — 电影节与电影市场的一手见闻、报道与观察。</p>
+      <p><strong>Conversations</strong> — 与导演及电影创作者的采访与交流。</p>
+      <p><strong>Notes</strong> — 迷影生活、影院、旅行、物件、行业观察与偶尔的电影评论。</p>
+    </div>
+  </article>
+
+  <article>
+    <span class="section-label">03 / LANGUAGE</span>
+    <div class="i18n-en">
+      <h2>English + 中文</h2>
+      <p>CREAM TART is being built bilingually. English is the primary interface language; Chinese remains available throughout the site. Older archival pieces may first appear in their original Chinese and receive English versions gradually.</p>
+    </div>
+    <div class="i18n-zh">
+      <h2>英文 + 中文</h2>
+      <p>奶油蛋挞从一开始就按双语媒体搭建。界面以英文为主，同时保留中文。早期迁移的档案文章可能先以原始中文呈现，再逐步补充英文版本。</p>
+    </div>
+  </article>
+
+  <article>
+    <span class="section-label">04 / CONTACT</span>
+    <div class="i18n-en">
+      <h2>Contact</h2>
+      <p>For festival accreditation, editorial enquiries, interviews, screeners and collaboration.</p>
+    </div>
+    <div class="i18n-zh">
+      <h2>联系</h2>
+      <p>电影节媒体申请、采访、媒体合作、审片与其他联系。</p>
+    </div>
+    {% if site.contact.email != "" %}<p><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></p>{% else %}<p class="muted">Email — add in <code>_config.yml</code></p>{% endif %}
+    {% if site.contact.phone != "" %}<p>{{ site.contact.phone }}</p>{% else %}<p class="muted">Phone — add in <code>_config.yml</code></p>{% endif %}
+  </article>
+</section>

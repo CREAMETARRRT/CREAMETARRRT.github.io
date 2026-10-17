@@ -1,0 +1,28 @@
+---
+layout: default
+title: Notes
+---
+<section class="page-intro">
+  <div class="eyebrow">FIELD NOTES / FILMGOING</div>
+  <h1>NOTES</h1>
+  <p class="i18n-en">The life around cinema: filmgoing, theatres, travel, objects, encounters, industry observations and occasional criticism.</p>
+  <p class="i18n-zh">围绕电影展开的生活：观影、影院、旅行、物件、相遇、行业观察，以及偶尔的评论。</p>
+</section>
+<section class="archive-list">
+{% assign notes = site.categories.notes %}
+{% for post in notes %}
+  <a class="archive-row" href="{{ post.url | relative_url }}" data-category="notes">
+    <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+    <strong>{% include post-title.html post=post %}</strong>
+    <em>NOTE</em>
+  </a>
+{% endfor %}
+{% assign writing = site.categories.writing %}
+{% for post in writing %}
+  <a class="archive-row" href="{{ post.url | relative_url }}" data-category="notes">
+    <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+    <strong>{% include post-title.html post=post %}</strong>
+    <em>NOTE</em>
+  </a>
+{% endfor %}
+</section>

@@ -3,39 +3,121 @@ layout: default
 ---
 <section class="masthead">
   <p class="kicker">INDEPENDENT CINEMA JOURNAL</p>
-  <h1>奶油蛋挞</h1>
-  <p class="masthead-en">CREAM TART</p>
-  <p class="masthead-copy">Independent cinema, festivals and moving images.<br>关于放映、影展、电影与现场的长期记录。</p>
+  <h1>CREAM<br>TART</h1>
+  <p class="masthead-zh">奶油蛋挞</p>
+  <p class="masthead-copy i18n-en">Independent cinema, festival dispatches, filmmaker conversations and screening records — shaped by first-hand encounters with films and the places around them.</p>
+  <p class="masthead-copy i18n-zh">关于独立电影、电影节、导演对谈、放映，以及围绕电影发生的生活与现场。</p>
 </section>
 
 {% assign featured = site.posts | first %}
 {% if featured %}
 <section class="featured">
-  <div class="section-label">LATEST</div>
+  <div class="section-head">
+    <div class="section-label">LATEST</div>
+    <a href="{{ '/archive/' | relative_url }}" class="section-link"><span class="i18n-en">ALL STORIES →</span><span class="i18n-zh">全部文章 →</span></a>
+  </div>
   <a class="featured-card" href="{{ featured.url | relative_url }}">
     <div class="featured-copy">
-      <span class="eyebrow">{{ featured.category | default: featured.categories | first | upcase }}</span>
-      <h2>{{ featured.title }}</h2>
-      {% if featured.deck %}<p>{{ featured.deck }}</p>{% endif %}
+      <span class="eyebrow">{% include category-label.html post=featured %}</span>
+      <h2>{% include post-title.html post=featured %}</h2>
+      {% if featured.deck or featured.deck_en or featured.deck_zh %}<p>{% include post-deck.html post=featured %}</p>{% endif %}
       <span class="meta-line">{{ featured.date | date: "%d %b %Y" }} · {{ featured.author | default: site.author.name }}</span>
     </div>
-    <div class="featured-number">001</div>
+    <div class="featured-number">01</div>
   </a>
 </section>
 {% endif %}
 
-<section class="latest-grid-section">
-  <div class="section-label">MORE STORIES</div>
-  <div class="story-grid">
-  {% for post in site.posts offset:1 limit:8 %}
-    <article class="story-card">
-      <a href="{{ post.url | relative_url }}">
-        <span class="eyebrow">{{ post.category | default: post.categories | first | upcase }}</span>
-        <h3>{{ post.title }}</h3>
-        {% if post.deck %}<p>{{ post.deck }}</p>{% endif %}
-        <span class="meta-line">{{ post.date | date: "%d %b %Y" }}</span>
-      </a>
-    </article>
-  {% endfor %}
+{% assign screening_posts = site.categories.screenings %}
+<section class="editorial-section">
+  <div class="section-head">
+    <div><div class="section-label">SCREENINGS · 40%</div><h2><span class="i18n-en">Screening records</span><span class="i18n-zh">放映留存</span></h2></div>
+    <a href="{{ '/screenings/' | relative_url }}" class="section-link">VIEW →</a>
   </div>
+  <p class="section-deck i18n-en">Independent and underground film screenings, Q&As, guests and curated programmes — recorded around the films and people themselves.</p>
+  <p class="section-deck i18n-zh">独立电影与地下电影的放映记录：影片、嘉宾、映后与策展单元，以活动留存为主。</p>
+  {% if screening_posts and screening_posts.size > 0 %}
+  <div class="compact-grid">
+    {% for post in screening_posts limit:3 %}
+    <a class="compact-card" href="{{ post.url | relative_url }}">
+      <span class="meta-line">{{ post.date | date: "%Y.%m.%d" }}{% if post.location %} · {{ post.location }}{% endif %}</span>
+      <h3>{% include post-title.html post=post %}</h3>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+{% assign festival_posts = site.categories.festivals %}
+<section class="editorial-section">
+  <div class="section-head">
+    <div><div class="section-label">FESTIVALS · 20%</div><h2><span class="i18n-en">Festival dispatches</span><span class="i18n-zh">电影节现场</span></h2></div>
+    <a href="{{ '/festivals/' | relative_url }}" class="section-link">VIEW →</a>
+  </div>
+  <p class="section-deck i18n-en">First-hand notes from festivals and markets: films, encounters, venues, industry observations and cities.</p>
+  <p class="section-deck i18n-zh">从电影节与市场现场出发：影片、相遇、场馆、行业观察与城市经验。</p>
+  {% if festival_posts and festival_posts.size > 0 %}
+  <div class="compact-grid">
+    {% for post in festival_posts limit:3 %}
+    <a class="compact-card" href="{{ post.url | relative_url }}">
+      <span class="meta-line">{{ post.date | date: "%Y.%m.%d" }}</span>
+      <h3>{% include post-title.html post=post %}</h3>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+{% assign conversation_posts = site.categories.conversations %}
+<section class="editorial-section">
+  <div class="section-head">
+    <div><div class="section-label">CONVERSATIONS · 20%</div><h2><span class="i18n-en">Filmmaker conversations</span><span class="i18n-zh">导演与创作者对谈</span></h2></div>
+    <a href="{{ '/conversations/' | relative_url }}" class="section-link">VIEW →</a>
+  </div>
+  <p class="section-deck i18n-en">Interviews, Q&As and conversations with filmmakers, often growing out of screenings and festival encounters.</p>
+  <p class="section-deck i18n-zh">导演采访、映后问答与创作者交流，很多从放映和电影节现场继续生长。</p>
+  {% if conversation_posts and conversation_posts.size > 0 %}
+  <div class="compact-grid">
+    {% for post in conversation_posts limit:3 %}
+    <a class="compact-card" href="{{ post.url | relative_url }}">
+      <span class="meta-line">{{ post.date | date: "%Y.%m.%d" }}</span>
+      <h3>{% include post-title.html post=post %}</h3>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+{% assign note_posts = site.categories.notes %}
+{% if note_posts == nil or note_posts.size == 0 %}{% assign note_posts = site.categories.writing %}{% endif %}
+<section class="editorial-section">
+  <div class="section-head">
+    <div><div class="section-label">NOTES</div><h2><span class="i18n-en">The life around cinema</span><span class="i18n-zh">围绕电影的生活</span></h2></div>
+    <a href="{{ '/notes/' | relative_url }}" class="section-link">VIEW →</a>
+  </div>
+  <p class="section-deck i18n-en">Filmgoing, cinemas, travel, objects, encounters and occasional criticism — personal, but always connected to moving images.</p>
+  <p class="section-deck i18n-zh">迷影生活、影院、旅行、物件、相遇与偶尔的评论：保持个人经验，但始终与电影有关。</p>
+  {% if note_posts and note_posts.size > 0 %}
+  <div class="compact-grid">
+    {% for post in note_posts limit:3 %}
+    <a class="compact-card" href="{{ post.url | relative_url }}">
+      <span class="meta-line">{{ post.date | date: "%Y.%m.%d" }}</span>
+      <h3>{% include post-title.html post=post %}</h3>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="home-bottom-grid">
+  <a class="home-panel" href="{{ '/goods/' | relative_url }}">
+    <span class="section-label">GOODS</span>
+    <h2><span class="i18n-en">Objects around films.</span><span class="i18n-zh">围绕电影产生的物件。</span></h2>
+    <p><span class="i18n-en">Display only. Available offline.</span><span class="i18n-zh">仅作展示，购买请前往线下。</span></p>
+  </a>
+  <a class="home-panel" href="{{ '/archive/' | relative_url }}">
+    <span class="section-label">ARCHIVE</span>
+    <h2><span class="i18n-en">A growing record.</span><span class="i18n-zh">持续生长的电影档案。</span></h2>
+    <p><span class="i18n-en">Browse by year and editorial section.</span><span class="i18n-zh">按年份与栏目浏览所有记录。</span></p>
+  </a>
 </section>

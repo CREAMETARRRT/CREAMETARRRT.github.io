@@ -3,16 +3,18 @@ layout: default
 title: Screenings
 ---
 <section class="page-intro">
-  <div class="eyebrow">ARCHIVE</div>
+  <div class="eyebrow">SCREENING ARCHIVE</div>
   <h1>SCREENINGS</h1>
-  <p>放映记录、映后交流、导演对谈，以及电影在银幕之外继续发生的时刻。</p>
+  <p class="i18n-en">Selected records of independent and underground film screenings, Q&As, guest appearances and curated programmes. Each entry centers the film, guest and context of the event.</p>
+  <p class="i18n-zh">独立电影与地下电影的放映、映后、嘉宾交流与策展单元记录。每一条记录首先关注影片、创作者与现场本身。</p>
 </section>
 <section class="archive-list">
 {% assign posts = site.categories.screenings %}
 {% for post in posts %}
-  <a class="archive-row" href="{{ post.url | relative_url }}">
-    <span>{{ post.date | date: "%Y.%m.%d" }}</span>
-    <strong>{{ post.title }}</strong>
+  <a class="archive-row" href="{{ post.url | relative_url }}" data-category="screenings">
+    <span>{{ post.date | date: "%Y.%m.%d" }}{% if post.location %}<br>{{ post.location }}{% endif %}</span>
+    <strong>{% include post-title.html post=post %}</strong>
+    <em>{{ post.screening_type | default: "SCREENING" }}</em>
   </a>
 {% endfor %}
 </section>

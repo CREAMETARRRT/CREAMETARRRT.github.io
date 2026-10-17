@@ -1,0 +1,30 @@
+---
+layout: default
+title: Archive
+---
+<section class="page-intro">
+  <div class="eyebrow">ALL RECORDS</div>
+  <h1>ARCHIVE</h1>
+  <p class="i18n-en">Everything CREAM TART keeps: screenings, festivals, conversations and notes.</p>
+  <p class="i18n-zh">奶油蛋挞留下的一切：放映、影展、对谈与札记。</p>
+</section>
+<section class="archive-tools">
+  <button class="archive-filter is-active" data-filter="all">ALL</button>
+  <button class="archive-filter" data-filter="screenings">SCREENINGS</button>
+  <button class="archive-filter" data-filter="festivals">FESTIVALS</button>
+  <button class="archive-filter" data-filter="conversations">CONVERSATIONS</button>
+  <button class="archive-filter" data-filter="notes">NOTES</button>
+</section>
+<section class="archive-list archive-filterable">
+{% for post in site.posts %}
+  {% assign cat = post.category %}
+  {% if cat == nil or cat == "" %}{% assign cat = post.categories | first %}{% endif %}
+  {% assign cat = cat | downcase %}
+  {% if cat == 'writing' %}{% assign cat = 'notes' %}{% endif %}
+  <a class="archive-row" href="{{ post.url | relative_url }}" data-category="{{ cat }}">
+    <span>{{ post.date | date: "%Y.%m.%d" }}{% if post.location %}<br>{{ post.location }}{% endif %}</span>
+    <strong>{% include post-title.html post=post %}</strong>
+    <em>{% include category-label.html post=post %}</em>
+  </a>
+{% endfor %}
+</section>

@@ -1,15 +1,26 @@
 <header class="site-header">
-  <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="CREAM TART home">
     <span class="brand-mark">CT</span>
     <span class="brand-copy">
-      <strong>{{ site.title }}</strong>
-      <small>{{ site.subtitle }}</small>
+      <strong>CREAM TART</strong>
+      <small>奶油蛋挞</small>
     </span>
   </a>
-  <button class="menu-toggle" aria-label="打开菜单" aria-expanded="false">MENU</button>
-  <nav class="site-nav" aria-label="主导航">
+
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">MENU</button>
+
+  <nav class="site-nav" aria-label="Primary navigation">
     {% for item in site.data.navigation %}
-      <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+      <a href="{{ item.url | relative_url }}">
+        <span class="i18n-en">{{ item.name_en }}</span>
+        <span class="i18n-zh">{{ item.name_zh }}</span>
+      </a>
     {% endfor %}
   </nav>
+
+  <div class="language-switch" aria-label="Language">
+    <button type="button" data-lang-switch="en" aria-pressed="true">EN</button>
+    <span>/</span>
+    <button type="button" data-lang-switch="zh" aria-pressed="false">中文</button>
+  </div>
 </header>

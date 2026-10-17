@@ -1,0 +1,12 @@
+{% assign p = include.post %}
+{% assign cat = p.category %}
+{% if cat == nil or cat == "" %}{% assign cat = p.categories | first %}{% endif %}
+{% assign cat = cat | downcase %}
+{% case cat %}
+  {% when 'screenings' %}<span class="i18n-en">SCREENINGS</span><span class="i18n-zh">放映</span>
+  {% when 'festivals' %}<span class="i18n-en">FESTIVALS</span><span class="i18n-zh">影展</span>
+  {% when 'conversations' %}<span class="i18n-en">CONVERSATIONS</span><span class="i18n-zh">对谈</span>
+  {% when 'notes' %}<span class="i18n-en">NOTES</span><span class="i18n-zh">札记</span>
+  {% when 'writing' %}<span class="i18n-en">NOTES</span><span class="i18n-zh">札记</span>
+  {% else %}{{ cat | upcase }}
+{% endcase %}

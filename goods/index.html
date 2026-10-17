@@ -1,0 +1,30 @@
+---
+layout: default
+title: Goods
+---
+<section class="page-intro">
+  <div class="eyebrow">OBJECTS / EDITIONS</div>
+  <h1>GOODS</h1>
+  <p class="i18n-en">Objects, printed matter and small editions made around films and screenings. Display only; purchase is available offline.</p>
+  <p class="i18n-zh">围绕电影与放映产生的物件、印刷品和小型出版物。网站仅作展示，购买请前往线下。</p>
+</section>
+<section class="goods-grid">
+{% if site.data.goods and site.data.goods.size > 0 %}
+  {% for item in site.data.goods %}
+  <article class="goods-card">
+    {% if item.image %}<img src="{{ item.image | relative_url }}" alt="{{ item.title_en | default: item.title_zh }}">{% endif %}
+    <div class="goods-card-copy">
+      <span class="eyebrow">OFFLINE ONLY</span>
+      <h2><span class="i18n-en">{{ item.title_en }}</span><span class="i18n-zh">{{ item.title_zh }}</span></h2>
+      <p><span class="i18n-en">{{ item.note_en }}</span><span class="i18n-zh">{{ item.note_zh }}</span></p>
+    </div>
+  </article>
+  {% endfor %}
+{% else %}
+  <div class="empty-state">
+    <span class="section-label">COMING SOON</span>
+    <h2><span class="i18n-en">The shelf is being arranged.</span><span class="i18n-zh">货架正在慢慢摆好。</span></h2>
+    <p><span class="i18n-en">Goods will appear here as the archive grows.</span><span class="i18n-zh">之后会逐步放入放映相关周边与出版物。</span></p>
+  </div>
+{% endif %}
+</section>

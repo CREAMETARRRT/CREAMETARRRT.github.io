@@ -1,0 +1,7 @@
+{% assign p = include.post %}
+{% if p.title_en or p.title_zh %}
+  <span class="i18n-en">{{ p.title_en | default: p.title }}</span>
+  <span class="i18n-zh">{{ p.title_zh | default: p.title }}</span>
+{% else %}
+  {{ p.title }}
+{% endif %}

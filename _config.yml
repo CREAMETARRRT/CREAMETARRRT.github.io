@@ -1,23 +1,33 @@
-title: "奶油蛋挞"
-subtitle: "CREAM TART"
-description: "Independent cinema, festivals and moving images."
+title: "CREAM TART"
+title_zh: "奶油蛋挞"
+subtitle: "Independent Cinema Journal"
+description: "Independent cinema, festival dispatches, filmmaker conversations and screening records."
 url: ""
 baseurl: ""
-lang: "zh-CN"
+lang: "en"
 timezone: "Asia/Shanghai"
 permalink: /:categories/:year/:month/:day/:title/
 markdown: kramdown
 future: true
 
-# Edit these later
+# One-person publication. Add your public-facing name when you are ready.
 author:
-  name: "奶油蛋挞编辑部"
+  name: "CREAM TART"
+  role: "Editor / Publisher"
+
+# Leave blank until you want them public.
+contact:
   email: ""
+  phone: ""
 
 social:
   instagram: ""
+  x: ""
+  letterboxd: ""
   xiaohongshu: ""
+  wechat: ""
 
 exclude:
   - README.md
+  - CONTENT-GUIDE.md
   - LICENSE
